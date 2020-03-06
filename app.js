@@ -67,5 +67,9 @@ const tasks = [
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete task";
     deleteBtn.classList.add("btn", "btn-danger", "ml-auto", "delete-btn");
+
+    const article = document.createElement("p");
+    article.textContent = body;
+    article.classList.add("mt-2", "w-100");
   }
 })(tasks);

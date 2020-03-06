@@ -58,8 +58,10 @@ const tasks = [
       "d-flex",
       "align-items-center",
       "flex-wrap",
-      "mt-2",
+      "mt-2"
     );
-    console.log(li);
+    const span = document.createElement("span");
+    span.textContent = title;
+    span.style.fontWeight = "bold";
   }
 })(tasks);

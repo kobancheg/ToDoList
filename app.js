@@ -33,9 +33,22 @@ const tasks = [
 
 (function(arrOfTasks) {
   const objOfTasks = arrOfTasks.reduce((acc, task) => {
-	  acc[task._id] = task;
-	  return acc;
+    acc[task._id] = task;
+    return acc;
   }, {});
 
-  
+  renderAllTasks(objOfTasks);
+
+  function renderAllTasks(tasksList) {
+    if (!tasksList) {
+      console.error("Передайте список задач!");
+      return;
+    }
+
+	 const fragment = document.createDocumentFragment();
+	 Object.values(tasksList).forEach(task => {
+		 console.log(task);
+	 });
+
+  }
 })(tasks);

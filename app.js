@@ -38,7 +38,7 @@ const tasks = [
   }, {});
 
   //   Elements UI
-  const listContainer = document.createElement(
+  const listContainer = document.querySelector(
     ".tasks-list-section .list-group"
   );
 
@@ -55,6 +55,7 @@ const tasks = [
       const li = listItemTemplate(task);
       fragment.appendChild(li);
     });
+    listContainer.appendChild(fragment);
   }
 
   function listItemTemplate({ _id, title, body } = {}) {

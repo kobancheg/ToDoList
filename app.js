@@ -52,6 +52,14 @@ const tasks = [
   }
 
   function listItemTemplate({ _id, title, body } = {}) {
-    console.log(_id, title);
+    const li = document.createElement("li");
+    li.classList.add(
+      "list-group-item",
+      "d-flex",
+      "align-items-center",
+      "flex-wrap",
+      "mt-2",
+    );
+    console.log(li);
   }
 })(tasks);

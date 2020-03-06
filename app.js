@@ -63,5 +63,9 @@ const tasks = [
     const span = document.createElement("span");
     span.textContent = title;
     span.style.fontWeight = "bold";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete task";
+    deleteBtn.classList.add("btn", "btn-danger", "ml-auto", "delete-btn");
   }
 })(tasks);

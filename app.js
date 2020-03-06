@@ -37,6 +37,11 @@ const tasks = [
     return acc;
   }, {});
 
+  //   Elements UI
+  const listContainer = document.createElement(
+    ".tasks-list-section .list-group"
+  );
+
   renderAllTasks(objOfTasks);
 
   function renderAllTasks(tasksList) {
@@ -48,6 +53,7 @@ const tasks = [
     const fragment = document.createDocumentFragment();
     Object.values(tasksList).forEach(task => {
       const li = listItemTemplate(task);
+      fragment.appendChild(li);
     });
   }
 
@@ -71,5 +77,11 @@ const tasks = [
     const article = document.createElement("p");
     article.textContent = body;
     article.classList.add("mt-2", "w-100");
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    li.appendChild(article);
+
+    return li;
   }
 })(tasks);

@@ -45,9 +45,9 @@ const tasks = [
   const inputTitle = form.elements["title"];
   const inputBody = form.elements["body"];
 
-  console.log(inputTitle, inputBody);
-
+  //   Events
   renderAllTasks(objOfTasks);
+  form.addEventListener("submit", onFormSubmitHandler);
 
   function renderAllTasks(tasksList) {
     if (!tasksList) {
@@ -89,5 +89,13 @@ const tasks = [
     li.appendChild(article);
 
     return li;
+  }
+
+  function onFormSubmitHandler(e) {
+    e.preventDefault();
+    const titleValue = inputTitle.value;
+    const bodyValue = inputBody.value;
+
+    console.log(titleValue, bodyValue);
   }
 })(tasks);

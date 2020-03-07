@@ -100,5 +100,16 @@ const tasks = [
       alert("Пожалуйста введите название и содержание задачи");
       return;
     }
+    const task = createNewTask(titleValue, bodyValue);
+  }
+
+  function createNewTask(title, body) {
+    const newTask = {
+      title,
+      body,
+      completed: false,
+      _id: `task-${Math.random()}`
+    };
+    console.log(newTask);
   }
 })(tasks);

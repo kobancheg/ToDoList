@@ -6,6 +6,7 @@
 # Ignore IDE specific files
 .idea/
 .vscode/
+part_too/
 *.sw*
 original.zip
 

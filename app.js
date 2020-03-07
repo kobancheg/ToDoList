@@ -48,6 +48,7 @@ const tasks = [
   //   Events
   renderAllTasks(objOfTasks);
   form.addEventListener("submit", onFormSubmitHandler);
+  listContainer.addEventListener("click", onDeleteHandler);
 
   function renderAllTasks(tasksList) {
     if (!tasksList) {
@@ -103,6 +104,7 @@ const tasks = [
     const task = createNewTask(titleValue, bodyValue);
     const listItem = listItemTemplate(task);
     listContainer.insertAdjacentElement("afterbegin", listItem);
+    form.reset();
   }
 
   function createNewTask(title, body) {
@@ -115,5 +117,11 @@ const tasks = [
 
     objOfTasks[newTask._id] = newTask;
     return { ...newTask };
+  }
+
+  function onDeleteHandler({ target }) {
+    if (target.classList.contains("delete-btn")) {
+      const isConfirm = confirm("Вы действительно хотите удалить задачу?");
+    }
   }
 })(tasks);

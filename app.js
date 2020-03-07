@@ -101,6 +101,8 @@ const tasks = [
       return;
     }
     const task = createNewTask(titleValue, bodyValue);
+    const listItem = listItemTemplate(task);
+    listContainer.insertAdjacentElement("afterbegin", listItem);
   }
 
   function createNewTask(title, body) {
@@ -110,6 +112,8 @@ const tasks = [
       completed: false,
       _id: `task-${Math.random()}`
     };
-    console.log(newTask);
+
+    objOfTasks[newTask._id] = newTask;
+    return { ...newTask };
   }
 })(tasks);

@@ -73,6 +73,8 @@ const tasks = [
       "flex-wrap",
       "mt-2"
     );
+    li.setAttribute("data-task-id", _id);
+
     const span = document.createElement("span");
     span.textContent = title;
     span.style.fontWeight = "bold";
@@ -119,9 +121,27 @@ const tasks = [
     return { ...newTask };
   }
 
+  function deleteTask(id) {
+    const { title } = objOfTasks[id];
+    const isConfirm = confirm(
+      `Вы действительно хотите удалить задачу: ${title}?`
+    );
+    if (!isConfirm) return isConfirm;
+    delete objOfTasks[id];
+    return isConfirm;
+  }
+
+  function deleteTaskFromHtml(confirmed, el) {
+    if (!confirmed) return;
+    el.remove();
+  }
+
   function onDeleteHandler({ target }) {
     if (target.classList.contains("delete-btn")) {
-      const isConfirm = confirm("Вы действительно хотите удалить задачу?");
+      const parent = target.closest("[data-task-id]");
+      const id = parent.dataset.taskId;
+      const confirmed = deleteTask(id);
+      deleteTaskFromHtml(confirmed, parent);
     }
   }
 })(tasks);

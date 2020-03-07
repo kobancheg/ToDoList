@@ -96,6 +96,9 @@ const tasks = [
     const titleValue = inputTitle.value;
     const bodyValue = inputBody.value;
 
-    console.log(titleValue, bodyValue);
+    if (!titleValue || !bodyValue) {
+      alert("Пожалуйста введите название и содержание задачи");
+      return;
+    }
   }
 })(tasks);

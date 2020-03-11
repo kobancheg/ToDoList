@@ -111,11 +111,13 @@ const tasks = [
   const form = document.forms["addTask"];
   const inputTitle = form.elements["title"];
   const inputBody = form.elements["body"];
+  const themeSelect = document.getElementById("themeSelect");
 
   //   Events
   renderAllTasks(objOfTasks);
   form.addEventListener("submit", onFormSubmitHandler);
   listContainer.addEventListener("click", onDeleteHandler);
+  themeSelect.addEventListener("change", onThemeSelectHandler);
 
   function renderAllTasks(tasksList) {
     if (!tasksList) {
@@ -210,5 +212,21 @@ const tasks = [
       const confirmed = deleteTask(id);
       deleteTaskFromHtml(confirmed, parent);
     }
+  }
+
+  function onThemeSelectHandler(e) {
+    const selectedTheme = themeSelect.value;
+    const isConfirmed = confirm(
+      `Вы действительно хотите изменить тему: ${selectedTheme}`
+    );
+    if (!isConfirmed) return;
+    setTheme(selectedTheme);
+  }
+
+  function setTheme(name) {
+    const selectedThemeOdj = themes[name];
+    Object.entries(selectedThemeOdj).forEach(([key, value]) => {
+      console.log(key, value);
+    });
   }
 })(tasks);

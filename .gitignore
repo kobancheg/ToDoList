@@ -7,6 +7,7 @@
 .idea/
 .vscode/
 part_too/
+themes/
 *.sw*
 original.zip
 

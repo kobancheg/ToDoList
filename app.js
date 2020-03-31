@@ -1,10 +1,17 @@
 const tasks = [];
 
 (function(arrOfTasks) {
-  const objOfTasks = arrOfTasks.reduce((acc, task) => {
+  let defObjTasks = arrOfTasks.reduce((acc, task) => {
     acc[task._id] = task;
     return acc;
   }, {});
+
+  let objOfTasks;
+  if (localStorage.getItem("item")) {
+    objOfTasks = JSON.parse(localStorage.getItem("item"));
+  } else {
+    objOfTasks = defObjTasks;
+  }
 
   const themes = {
     default: {
@@ -74,9 +81,8 @@ const tasks = [];
   };
 
   let lastSelectedTheme = localStorage.getItem("app_theme") || "default";
-  let renderTasksFromLocal = JSON.parse(localStorage.getItem("objOfTasks"));
-
-  console.log(renderTasksFromLocal);
+  let renderTasksFromLocal = JSON.parse(localStorage.getItem("item"));
+  //   console.log(typeof renderTasksFromLocal);
 
   //   Elements UI
   const listContainer = document.querySelector(
@@ -89,7 +95,7 @@ const tasks = [];
 
   //   Events
   setTheme(lastSelectedTheme);
-  renderAllTasks(objOfTasks);
+  renderAllTasks(renderTasksFromLocal);
 
   form.addEventListener("submit", onFormSubmitHandler);
   listContainer.addEventListener("click", onDeleteHandler);
@@ -164,7 +170,7 @@ const tasks = [];
 
     objOfTasks[newTask._id] = newTask;
 
-    localStorage.setItem("objOfTasks", JSON.stringify(objOfTasks));
+    localStorage.setItem("item", JSON.stringify(objOfTasks));
 
     return { ...newTask };
   }

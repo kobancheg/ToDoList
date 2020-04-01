@@ -81,8 +81,6 @@ const tasks = [];
   };
 
   let lastSelectedTheme = localStorage.getItem("app_theme") || "default";
-  let renderTasksFromLocal = JSON.parse(localStorage.getItem("item"));
-  //   console.log(typeof renderTasksFromLocal);
 
   //   Elements UI
   const listContainer = document.querySelector(
@@ -95,7 +93,7 @@ const tasks = [];
 
   //   Events
   setTheme(lastSelectedTheme);
-  renderAllTasks(renderTasksFromLocal);
+  renderAllTasks(objOfTasks);
 
   form.addEventListener("submit", onFormSubmitHandler);
   listContainer.addEventListener("click", onDeleteHandler);
@@ -182,6 +180,7 @@ const tasks = [];
     );
     if (!isConfirm) return isConfirm;
     delete objOfTasks[id];
+    localStorage.setItem("item", JSON.stringify(objOfTasks));
     return isConfirm;
   }
 

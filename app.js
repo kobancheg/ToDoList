@@ -1,16 +1,9 @@
-const tasks = [];
-
-(function(arrOfTasks) {
-  let defObjTasks = arrOfTasks.reduce((acc, task) => {
-    acc[task._id] = task;
-    return acc;
-  }, {});
-
+(function() {
   let objOfTasks;
   if (localStorage.getItem("item")) {
     objOfTasks = JSON.parse(localStorage.getItem("item"));
   } else {
-    objOfTasks = defObjTasks;
+    objOfTasks = {};
   }
 
   const themes = {
@@ -218,4 +211,4 @@ const tasks = [];
       document.documentElement.style.setProperty(key, value);
     });
   }
-})(tasks);
+})();

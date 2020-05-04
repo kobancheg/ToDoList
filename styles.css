@@ -23,6 +23,10 @@ body {
   color: var(--base-text-color);
 }
 
+.container {
+  max-width: 600px;
+}
+
 .navbar {
   background: var(--header-bg) !important;
 }

@@ -10,6 +10,7 @@ part_too/
 themes/
 *.sw*
 original.zip
+ToDoList.code-workspace
 
 # User-specific files
 *.rsuser

@@ -136,10 +136,8 @@
 		);
 		li.setAttribute("data-task-id", _id);
 
-		if (completed === true) {
-			li.classList.add('bg-light', 'text-dark');
-		}
-
+		if (completed === true) li.classList.add('bg-light', 'text-dark');
+		
 		const span = document.createElement("span");
 		span.textContent = title;
 		span.style.fontWeight = "bold";

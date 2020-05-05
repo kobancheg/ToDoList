@@ -139,14 +139,17 @@
 		span.textContent = title;
 		span.style.fontWeight = "bold";
 
+		const successBtn = document.createElement("button");
+		successBtn.classList.add("btn", "btn-success", "ml-auto", "success-btn");
 		const deleteBtn = document.createElement("button");
-		deleteBtn.classList.add("btn", "btn-danger", "ml-auto", "delete-btn");
+		deleteBtn.classList.add("btn", "btn-danger", "ml-1", "delete-btn");
 
 		const article = document.createElement("p");
 		article.textContent = body;
 		article.classList.add("mt-2", "w-100");
 
 		li.appendChild(span);
+		li.appendChild(successBtn);
 		li.appendChild(deleteBtn);
 		li.appendChild(article);
 

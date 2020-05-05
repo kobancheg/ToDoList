@@ -81,3 +81,8 @@ body {
   content: '\f014';
   font-family: 'icomoon';
 }
+
+.btn.btn-success::before {
+  content: '\f046';
+  font-family: 'icomoon';
+}

@@ -93,6 +93,7 @@
 	msgEmptyList(objOfTasks);
 
 	form.addEventListener("submit", onFormSubmitHandler);
+	listContainer.addEventListener('click', onSuccess);
 	listContainer.addEventListener("click", onDeleteHandler);
 	themeSelect.addEventListener("change", onThemeSelectHandler);
 
@@ -124,7 +125,7 @@
 		listContainer.appendChild(fragment);
 	}
 
-	function listItemTemplate({ _id, title, body } = {}) {
+	function listItemTemplate({ _id, title, body, completed } = {}) {
 		const li = document.createElement("li");
 		li.classList.add(
 			"list-group-item",
@@ -134,6 +135,10 @@
 			"mt-2"
 		);
 		li.setAttribute("data-task-id", _id);
+
+		if (completed === true) {
+			li.classList.add('bg-light', 'text-dark');
+		}
 
 		const span = document.createElement("span");
 		span.textContent = title;
@@ -211,6 +216,23 @@
 			const confirmed = deleteTask(id);
 			deleteTaskFromHtml(confirmed, parent);
 			msgEmptyList(objOfTasks);
+		}
+	}
+
+	function currentTask(id, parent) {
+		const { title } = objOfTasks[id];
+		const isConfirm = confirm(`Отметить задачу: ${title} как выполненную?`)
+		if (!isConfirm) return;
+		objOfTasks[id]['completed'] = true;
+		localStorage.setItem("item", JSON.stringify(objOfTasks));
+		parent.classList.add('bg-light', 'text-dark');
+	}
+
+	function onSuccess({ target }) {
+		if (target.classList.contains('success-btn')) {
+			const parent = target.closest("[data-task-id]");
+			const id = parent.dataset.taskId;
+			currentTask(id, parent);
 		}
 	}
 

@@ -6,6 +6,8 @@
 		objOfTasks = {};
 	}
 
+	console.log(objOfTasks)
+
 	const themes = {
 		default: {
 			"--base-text-color": "#212529",
@@ -138,7 +140,6 @@
 		span.style.fontWeight = "bold";
 
 		const deleteBtn = document.createElement("button");
-		deleteBtn.textContent = "Удалить задачу";
 		deleteBtn.classList.add("btn", "btn-danger", "ml-auto", "delete-btn");
 
 		const article = document.createElement("p");

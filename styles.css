@@ -55,6 +55,7 @@ body {
   color: var(--danger-btn-text-color);
   background-color: var(--danger-btn-bg);
   border-color: var(--danger-btn-border-color);
+  /* position: relative; */
 }
 
 .btn.btn-danger:hover {
@@ -74,4 +75,9 @@ body {
   background-color: var(--input-focus-bg-color);
   border-color: var(--input-focus-border-color);
   box-shadow: var(--input-focus-box-shadow);
+}
+
+.btn.btn-danger::before {
+  content: '\f014';
+  font-family: 'icomoon';
 }

@@ -23,6 +23,10 @@ body {
   color: var(--base-text-color);
 }
 
+a {
+    color: inherit;
+}
+
 .container {
   max-width: 600px;
 }
@@ -86,3 +90,4 @@ body {
   content: '\f046';
   font-family: 'icomoon';
 }
+
